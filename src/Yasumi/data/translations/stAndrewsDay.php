@@ -1,8 +1,9 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +13,6 @@
 
 // Translations for St. Andrew's Day
 return [
-    'en_US' => 'St. Andrew\'s Day',
-    'en_GB' => 'St. Andrew\'s Day',
-    'ro_RO' => 'Sfântul Andrei',
+    'en' => 'St. Andrew\'s Day',
+    'ro' => 'Sfântul Andrei',
 ];

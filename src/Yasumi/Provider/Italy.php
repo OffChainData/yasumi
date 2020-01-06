@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -71,7 +71,7 @@ class Italy extends AbstractProvider
      * Nazi occupation of the country. On May 27, 1949, bill 260 made the anniversary a permanent, annual national
      * holiday.
      *
-     * @link http://en.wikipedia.org/wiki/Liberation_Day_%28Italy%29
+     * @link https://en.wikipedia.org/wiki/Liberation_Day_%28Italy%29
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -84,7 +84,7 @@ class Italy extends AbstractProvider
         if ($this->year >= 1949) {
             $this->addHoliday(new Holiday(
                 'liberationDay',
-                ['it_IT' => 'Festa della Liberazione'],
+                ['it' => 'Festa della Liberazione'],
                 new DateTime("$this->year-4-25", new DateTimeZone($this->timezone)),
                 $this->locale
             ));
@@ -99,7 +99,7 @@ class Italy extends AbstractProvider
      * in 1946, in which the Italian people were called to the polls to decide on the form of government, following
      * the Second World War and the fall of Fascism.
      *
-     * @link http://en.wikipedia.org/wiki/Festa_della_Repubblica
+     * @link https://en.wikipedia.org/wiki/Festa_della_Repubblica
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -112,7 +112,7 @@ class Italy extends AbstractProvider
         if ($this->year >= 1946) {
             $this->addHoliday(new Holiday(
                 'republicDay',
-                ['it_IT' => 'Festa della Repubblica'],
+                ['it' => 'Festa della Repubblica'],
                 new DateTime("$this->year-6-2", new DateTimeZone($this->timezone)),
                 $this->locale
             ));

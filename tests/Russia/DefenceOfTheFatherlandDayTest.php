@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -79,7 +79,7 @@ class DefenceOfTheFatherlandDayTest extends RussiaBaseTestCase implements Yasumi
             self::REGION,
             self::HOLIDAY,
             $this->generateRandomYear(Russia::DEFENCE_OF_THE_FATHERLAND_START_YEAR),
-            ['en_US' => 'Defence of the Fatherland Day']
+            ['en' => 'Defence of the Fatherland Day']
         );
     }
 

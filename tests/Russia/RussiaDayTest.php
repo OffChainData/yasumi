@@ -3,7 +3,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -80,7 +80,7 @@ class RussiaDayTest extends RussiaBaseTestCase implements YasumiTestCaseInterfac
             self::REGION,
             self::HOLIDAY,
             $this->generateRandomYear(Russia::RUSSIA_DAY_START_YEAR),
-            ['en_US' => 'Russia Day']
+            ['en' => 'Russia Day']
         );
     }
 

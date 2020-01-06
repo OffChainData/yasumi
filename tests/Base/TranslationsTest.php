@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,7 +28,7 @@ class TranslationsTest extends TestCase
     public const LOCALES = [
         'en_US',
         'nl_NL',
-        'pl_PL'
+        'pl_PL',
     ];
 
     /**
@@ -280,8 +280,8 @@ FILE;
         vfsStream::setup('root', null, [
             'lang' => [
                 $firstShortName . '.php' => $firstFileContents,
-                $secondShortName . '.php' => $secondFileContents
-            ]
+                $secondShortName . '.php' => $secondFileContents,
+            ],
         ]);
 
         $translations = new Translations(self::LOCALES);

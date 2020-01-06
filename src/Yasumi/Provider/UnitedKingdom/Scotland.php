@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,6 +15,8 @@ namespace Yasumi\Provider\UnitedKingdom;
 use DateInterval;
 use DateTime;
 use DateTimeZone;
+use Yasumi\Exception\InvalidDateException;
+use Yasumi\Exception\UnknownLocaleException;
 use Yasumi\Holiday;
 use Yasumi\Provider\UnitedKingdom;
 use Yasumi\SubstituteHoliday;
@@ -41,18 +43,18 @@ class Scotland extends UnitedKingdom
      */
     public const ID = 'GB-SCT';
 
-    public $timezone = 'Europe/London';
-
     /**
      * Initialize holidays for the United Kingdom.
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      */
     public function initialize(): void
     {
+        parent::initialize();
+
         // Add common holidays
         $this->calculateNewYearsHolidays();
         $this->calculateMayDayBankHoliday();
@@ -74,11 +76,11 @@ class Scotland extends UnitedKingdom
      * If New Years Day falls on a Saturday, the following Monday and Tuesday are bank holidays.
      *
      * @link https://en.wikipedia.org/wiki/Public_holidays_in_Scotland
-     * @link http://www.timeanddate.com/holidays/uk/new-year-day
+     * @link https://www.timeanddate.com/holidays/uk/new-year-day
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      */
     protected function calculateNewYearsHolidays(): void
@@ -88,10 +90,9 @@ class Scotland extends UnitedKingdom
             return;
         }
 
+        $type = Holiday::TYPE_BANK;
         if ($this->year <= 1974) {
             $type = Holiday::TYPE_OBSERVANCE;
-        } else {
-            $type = Holiday::TYPE_BANK;
         }
 
         $newYearsDay = $this->newYearsDay($this->year, $this->timezone, $this->locale, $type);
@@ -138,9 +139,9 @@ class Scotland extends UnitedKingdom
      * @link https://www.timeanddate.com/holidays/uk/summer-bank-holiday
      * @link https://en.wikipedia.org/wiki/Public_holidays_in_Scotland
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      */
     protected function calculateSummerBankHoliday(): void
@@ -151,7 +152,7 @@ class Scotland extends UnitedKingdom
 
         $this->addHoliday(new Holiday(
             'summerBankHoliday',
-            ['en_GB' => 'August Bank Holiday'],
+            ['en' => 'August Bank Holiday'],
             new DateTime("first monday of august $this->year", new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK
@@ -165,9 +166,9 @@ class Scotland extends UnitedKingdom
      *
      * @link https://en.wikipedia.org/wiki/Saint_Andrew%27s_Day
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      * @throws \Exception
      */

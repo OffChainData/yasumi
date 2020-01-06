@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -68,7 +68,7 @@ class DevonportShowTest extends CentralNorthBaseTestCase implements YasumiTestCa
             [2017, '2017-12-01'],
             [2018, '2018-11-30'],
             [2019, '2019-11-29'],
-            [2020, '2020-11-27']
+            [2020, '2020-11-27'],
         ];
 
         return $data;

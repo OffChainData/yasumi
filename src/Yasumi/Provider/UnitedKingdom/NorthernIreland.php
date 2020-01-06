@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +14,8 @@ namespace Yasumi\Provider\UnitedKingdom;
 
 use DateTime;
 use DateTimeZone;
+use Yasumi\Exception\InvalidDateException;
+use Yasumi\Exception\UnknownLocaleException;
 use Yasumi\Holiday;
 use Yasumi\Provider\UnitedKingdom;
 use Yasumi\SubstituteHoliday;
@@ -35,14 +37,12 @@ class NorthernIreland extends UnitedKingdom
      */
     public const ID = 'GB-NIR';
 
-    public $timezone = 'Europe/Belfast';
-
     /**
      * Initialize holidays for Northern Ireland (United Kingdom).
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      */
     public function initialize(): void
@@ -64,9 +64,9 @@ class NorthernIreland extends UnitedKingdom
      *
      * @link https://en.wikipedia.org/wiki/Saint_Patrick%27s_Day
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      * @throws \Exception
      */
@@ -78,7 +78,7 @@ class NorthernIreland extends UnitedKingdom
 
         $holiday = new Holiday(
             'stPatricksDay',
-            ['en_GB' => 'St. Patrick\'s Day'],
+            ['en' => 'St. Patrick\'s Day'],
             new DateTime($this->year . '-3-17', new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK
@@ -110,9 +110,9 @@ class NorthernIreland extends UnitedKingdom
      *
      * @link https://en.wikipedia.org/wiki/The_Twelfth
      *
-     * @throws \Yasumi\Exception\InvalidDateException
+     * @throws InvalidDateException
      * @throws \InvalidArgumentException
-     * @throws \Yasumi\Exception\UnknownLocaleException
+     * @throws UnknownLocaleException
      * @throws \Exception
      * @throws \Exception
      */
@@ -124,7 +124,7 @@ class NorthernIreland extends UnitedKingdom
 
         $holiday = new Holiday(
             'battleOfTheBoyne',
-            ['en_GB' => 'Battle of the Boyne'],
+            ['en' => 'Battle of the Boyne'],
             new DateTime($this->year . '-7-12', new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK

@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -73,7 +73,7 @@ class QueensBirthdayTest extends WABaseTestCase implements YasumiTestCaseInterfa
             [2017, '2017-09-25'],
             [2018, '2018-09-24'],
             [2019, '2019-09-30'],
-            [2020, '2020-09-28']
+            [2020, '2020-09-28'],
         ];
 
         return $data;

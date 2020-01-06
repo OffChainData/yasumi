@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,7 +27,7 @@ use Yasumi\tests\YasumiTestCaseInterface;
  * April 25 is a national Italian holiday commemorating the end of the second world war and the end of Nazi occupation
  * of the country. On May 27, 1949, bill 260 made the anniversary a permanent, annual national holiday.
  *
- * @link http://en.wikipedia.org/wiki/Liberation_Day_%28Italy%29
+ * @link https://en.wikipedia.org/wiki/Liberation_Day_%28Italy%29
  */
 class LiberationDayTest extends ItalyBaseTestCase implements YasumiTestCaseInterface
 {

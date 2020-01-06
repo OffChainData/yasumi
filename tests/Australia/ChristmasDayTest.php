@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -50,7 +50,7 @@ class ChristmasDayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
             $year,
             new DateTime($expected, new DateTimeZone($this->timezone))
         );
-        if ($expectedExtra === null) {
+        if (null === $expectedExtra) {
             $this->assertNotHoliday(
                 $this->region,
                 self::HOLIDAY2,
@@ -84,7 +84,7 @@ class ChristmasDayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
             [2017, '2017-12-25', null],
             [2018, '2018-12-25', null],
             [2019, '2019-12-25', null],
-            [2020, '2020-12-25', null]
+            [2020, '2020-12-25', null],
         ];
 
         return $data;

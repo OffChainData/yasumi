@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,7 +42,7 @@ class BalearicIslandsTest extends BalearicIslandsBaseTestCase
             'allSaintsDay',
             'constitutionDay',
             'immaculateConception',
-            'christmasDay'
+            'christmasDay',
         ], self::REGION, $this->year, Holiday::TYPE_OFFICIAL);
     }
 
@@ -57,7 +57,7 @@ class BalearicIslandsTest extends BalearicIslandsBaseTestCase
             'maundyThursday',
             'easter',
             'easterMonday',
-            'stStephensDay'
+            'stStephensDay',
         ], self::REGION, $this->year, Holiday::TYPE_OBSERVANCE);
     }
 

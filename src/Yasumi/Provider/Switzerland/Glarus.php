@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -79,8 +79,7 @@ class Glarus extends Switzerland
         if ($this->year >= 1389) {
             $date = new DateTime('First Thursday of ' . $this->year . '-04', new DateTimeZone($this->timezone));
             $this->addHoliday(new Holiday('nafelserFahrt', [
-                'de_DE' => 'Näfelser Fahrt',
-                'de_CH' => 'Näfelser Fahrt'
+                'de' => 'Näfelser Fahrt',
             ], $date, $this->locale, Holiday::TYPE_OTHER));
         }
     }

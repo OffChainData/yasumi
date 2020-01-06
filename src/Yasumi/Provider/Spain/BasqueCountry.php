@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,7 +26,7 @@ use Yasumi\Provider\Spain;
  * The Basque Country is an autonomous community of northern Spain. It includes the Basque provinces of Álava, Biscay
  * and Gipuzkoa, also called Historical Territories.
  *
- * @link http://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)
+ * @link https://en.wikipedia.org/wiki/Basque_Country_(autonomous_community)
  */
 class BasqueCountry extends Spain
 {
@@ -68,7 +68,7 @@ class BasqueCountry extends Spain
      *
      * In 2016, this holiday is replaced by the Day of the First Constitiution of the Basque Country.
      *
-     * @link http://www.officeholidays.com/countries/spain/basque_community_day.php
+     * @link https://www.officeholidays.com/holidays/day-of-the-basque-country
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -80,7 +80,7 @@ class BasqueCountry extends Spain
         if ($this->year >= 2011 && $this->year <= 2013) {
             $this->addHoliday(new Holiday(
                 'basqueCountryDay',
-                ['es_ES' => 'Euskadi Eguna'],
+                ['es' => 'Euskadi Eguna'],
                 new DateTime("$this->year-10-25", new DateTimeZone($this->timezone)),
                 $this->locale
             ));

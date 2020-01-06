@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,7 +43,7 @@ class HolidayOnFilterTest extends TestCase
         $holidayDates = [
             'goodFriday' => new DateTime('03/25/2016', new DateTimeZone($timezone)),
             'easter' => new DateTime('03/27/2016', new DateTimeZone($timezone)),
-            'summerTime' => new DateTime('03/27/2016', new DateTimeZone($timezone))
+            'summerTime' => new DateTime('03/27/2016', new DateTimeZone($timezone)),
         ];
 
         foreach ($holidayDates as $name => $date) {
@@ -67,7 +67,7 @@ class HolidayOnFilterTest extends TestCase
         $holidayWrongDates = [
             'goodFriday' => new DateTime('04/25/2016', new DateTimeZone($timezone)),
             'easter' => new DateTime('03/22/2016', new DateTimeZone($timezone)),
-            'summerTime' => new DateTime('12/27/2016', new DateTimeZone($timezone))
+            'summerTime' => new DateTime('12/27/2016', new DateTimeZone($timezone)),
         ];
 
         foreach ($holidayWrongDates as $name => $date) {

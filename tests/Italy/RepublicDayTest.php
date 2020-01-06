@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,7 +27,7 @@ use Yasumi\tests\YasumiTestCaseInterface;
  * the Italian people were called to the polls to decide on the form of government, following the Second World War and
  * the fall of Fascism.
  *
- * @link http://en.wikipedia.org/wiki/Festa_della_Repubblica
+ * @link https://en.wikipedia.org/wiki/Festa_della_Repubblica
  */
 class RepublicDayTest extends ItalyBaseTestCase implements YasumiTestCaseInterface
 {

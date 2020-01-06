@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -73,7 +73,7 @@ class MelbourneCupDayTest extends VictoriaBaseTestCase implements YasumiTestCase
             [2017, '2017-11-07'],
             [2018, '2018-11-06'],
             [2019, '2019-11-05'],
-            [2020, '2020-11-03']
+            [2020, '2020-11-03'],
         ];
 
         return $data;

@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -83,8 +83,7 @@ class Jura extends Switzerland
             $this->addHoliday(new Holiday(
                 'plebisciteJurassien',
                 [
-                    'fr_FR' => 'Commémoration du plébiscite jurassien',
-                    'fr_CH' => 'Commémoration du plébiscite jurassien'
+                    'fr' => 'Commémoration du plébiscite jurassien',
                 ],
                 new DateTime($this->year . '-06-23', new DateTimeZone($this->timezone)),
                 $this->locale,

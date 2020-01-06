@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -59,7 +59,7 @@ class Victoria extends Australia
      * on a date based on a certain number of days after March 21st. The date of Easter Day was defined by the Council
      * of Nicaea in AD325 as the Sunday after the first full moon which falls on or after the Spring Equinox.
      *
-     * @link http://en.wikipedia.org/wiki/Easter
+     * @link https://en.wikipedia.org/wiki/Easter
      *
      * @param int $year the year for which Easter Saturday need to be created
      * @param string $timezone the timezone in which Easter Saturday is celebrated
@@ -73,11 +73,15 @@ class Victoria extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    private function easterSunday($year, $timezone, $locale, $type = null): Holiday
-    {
+    private function easterSunday(
+        int $year,
+        string $timezone,
+        string $locale,
+        ?string $type = null
+    ): Holiday {
         return new Holiday(
             'easter',
-            ['en_AU' => 'Easter Sunday'],
+            ['en' => 'Easter Sunday'],
             $this->calculateEaster($year, $timezone),
             $locale,
             $type ?? Holiday::TYPE_OFFICIAL
@@ -91,7 +95,7 @@ class Victoria extends Australia
      * on a date based on a certain number of days after March 21st. The date of Easter Day was defined by the Council
      * of Nicaea in AD325 as the Sunday after the first full moon which falls on or after the Spring Equinox.
      *
-     * @link http://en.wikipedia.org/wiki/Easter
+     * @link https://en.wikipedia.org/wiki/Easter
      *
      * @param int $year the year for which Easter Saturday need to be created
      * @param string $timezone the timezone in which Easter Saturday is celebrated
@@ -105,11 +109,15 @@ class Victoria extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    private function easterSaturday($year, $timezone, $locale, $type = null): Holiday
-    {
+    private function easterSaturday(
+        int $year,
+        string $timezone,
+        string $locale,
+        ?string $type = null
+    ): Holiday {
         return new Holiday(
             'easterSaturday',
-            ['en_AU' => 'Easter Saturday'],
+            ['en' => 'Easter Saturday'],
             $this->calculateEaster($year, $timezone)->sub(new DateInterval('P1D')),
             $locale,
             $type ?? Holiday::TYPE_OFFICIAL
@@ -125,7 +133,7 @@ class Victoria extends Australia
     {
         $date = new DateTime("second monday of march $this->year", new DateTimeZone($this->timezone));
 
-        $this->addHoliday(new Holiday('labourDay', ['en_AU' => 'Labour Day'], $date, $this->locale));
+        $this->addHoliday(new Holiday('labourDay', [], $date, $this->locale));
     }
 
     /**
@@ -147,8 +155,8 @@ class Victoria extends Australia
     {
         $this->calculateHoliday(
             'queensBirthday',
-            ['en_AU' => 'Queen\'s Birthday'],
             new DateTime('second monday of june ' . $this->year, new DateTimeZone($this->timezone)),
+            ['en' => 'Queen\'s Birthday'],
             false,
             false
         );
@@ -163,7 +171,7 @@ class Victoria extends Australia
     {
         $date = new DateTime('first Tuesday of November' . " $this->year", new DateTimeZone($this->timezone));
 
-        $this->addHoliday(new Holiday('melbourneCup', ['en_AU' => 'Melbourne Cup'], $date, $this->locale));
+        $this->addHoliday(new Holiday('melbourneCup', ['en' => 'Melbourne Cup'], $date, $this->locale));
     }
 
     /**
@@ -186,6 +194,12 @@ class Victoria extends Australia
             case 2018:
                 $aflGrandFinalFriday = '2018-09-28';
                 break;
+            case 2019:
+                $aflGrandFinalFriday = '2019-09-27';
+                break;
+            case 2020:
+                $aflGrandFinalFriday = '2020-09-25';
+                break;
             default:
                 return;
         }
@@ -194,7 +208,7 @@ class Victoria extends Australia
 
         $this->addHoliday(new Holiday(
             'aflGrandFinalFriday',
-            ['en_AU' => 'AFL Grand Final Friday'],
+            ['en' => 'AFL Grand Final Friday'],
             $date,
             $this->locale
         ));

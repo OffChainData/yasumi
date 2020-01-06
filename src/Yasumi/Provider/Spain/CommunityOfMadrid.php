@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,7 +29,7 @@ use Yasumi\Provider\Spain;
  * city of Madrid, which is also the national capital of Spain. It is bounded to the south and east by Castile–La Mancha
  * and to the north and west by Castile and León.
  *
- * @link http://en.wikipedia.org/wiki/Community_of_Madrid
+ * @link https://en.wikipedia.org/wiki/Community_of_Madrid
  */
 class CommunityOfMadrid extends Spain
 {
@@ -72,7 +72,7 @@ class CommunityOfMadrid extends Spain
      * Malasaña in memory of one of the heroines of the revolt, the teenager Manuela Malasaña, who was executed by
      * French troops in the aftermath of the revolt.
      *
-     * @link http://en.wikipedia.org/wiki/Dos_de_Mayo_Uprising
+     * @link https://en.wikipedia.org/wiki/Dos_de_Mayo_Uprising
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -83,7 +83,7 @@ class CommunityOfMadrid extends Spain
     {
         $this->addHoliday(new Holiday(
             'dosdeMayoUprisingDay',
-            ['es_ES' => 'Fiesta de la Comunidad de Madrid'],
+            ['es' => 'Fiesta de la Comunidad de Madrid'],
             new DateTime("$this->year-5-2", new DateTimeZone($this->timezone)),
             $this->locale
         ));

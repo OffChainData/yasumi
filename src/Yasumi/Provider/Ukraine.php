@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,6 +22,7 @@ use Yasumi\Holiday;
  *
  * Class Ukraine
  * @package Yasumi\Provider
+ *
  * @author  Dmitry Machin <machin.dmitry@gmail.com>
  */
 class Ukraine extends AbstractProvider
@@ -95,8 +96,8 @@ class Ukraine extends AbstractProvider
     private function calculateSecondInternationalWorkersDay(): void
     {
         $this->addHoliday(new Holiday('secondInternationalWorkersDay', [
-            'uk_UA' => 'День міжнародної солідарності трудящих',
-            'ru_UA' => 'День международной солидарности трудящихся'
+            'uk' => 'День міжнародної солідарності трудящих',
+            'ru' => 'День международной солидарности трудящихся',
         ], new \DateTime("$this->year-05-02", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
@@ -120,7 +121,7 @@ class Ukraine extends AbstractProvider
     {
         $this->addHoliday(new Holiday(
             'victoryDay',
-            ['uk_UA' => 'День перемоги', 'ru_UA' => 'День победы'],
+            ['uk' => 'День перемоги', 'ru' => 'День победы'],
             new \DateTime("$this->year-05-09", new \DateTimeZone($this->timezone)),
             $this->locale
         ));
@@ -146,7 +147,7 @@ class Ukraine extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'constitutionDay',
-            ['uk_UA' => 'День Конституції', 'ru_UA' => 'День Конституции'],
+            ['uk' => 'День Конституції', 'ru' => 'День Конституции'],
             new \DateTime("$this->year-06-28", new \DateTimeZone($this->timezone)),
             $this->locale
         ));
@@ -174,7 +175,7 @@ class Ukraine extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'independenceDay',
-            ['uk_UA' => 'День Незалежності', 'ru_UA' => 'День Независимости'],
+            ['uk' => 'День Незалежності', 'ru' => 'День Независимости'],
             new \DateTime("$this->year-08-24", new \DateTimeZone($this->timezone)),
             $this->locale
         ));
@@ -203,7 +204,7 @@ class Ukraine extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'defenderOfUkraineDay',
-            ['uk_UA' => 'День захисника України', 'ru_UA' => 'День Защитника Украины'],
+            ['uk' => 'День захисника України', 'ru' => 'День Защитника Украины'],
             new \DateTime("$this->year-10-14", new \DateTimeZone($this->timezone)),
             $this->locale
         ));
@@ -214,9 +215,10 @@ class Ukraine extends AbstractProvider
      * @param string $timezone
      *
      * @return \DateTime
+     *
      * @throws \Exception
      */
-    public function calculateEaster($year, $timezone): \DateTime
+    public function calculateEaster(int $year, string $timezone): \DateTime
     {
         return $this->calculateOrthodoxEaster($year, $timezone);
     }

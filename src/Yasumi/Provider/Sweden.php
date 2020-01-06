@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -177,7 +177,7 @@ class Sweden extends AbstractProvider
      * In many Lutheran Churches, it is moved to the first Sunday of November.
      *
      * @link https://en.wikipedia.org/wiki/All_Saints%27_Day
-     * @link http://www.timeanddate.com/holidays/sweden/all-saints-day
+     * @link https://www.timeanddate.com/holidays/sweden/all-saints-day
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -224,16 +224,16 @@ class Sweden extends AbstractProvider
             return;
         }
 
-        $holiday_name = 'Svenska flaggans dag';
+        $holidayName = 'Svenska flaggans dag';
 
         // Since 1983 this day was named 'Sveriges nationaldag'
         if ($this->year >= 1983) {
-            $holiday_name = 'Sveriges nationaldag';
+            $holidayName = 'Sveriges nationaldag';
         }
 
         $this->addHoliday(new Holiday(
             'nationalDay',
-            ['sv_SE' => $holiday_name],
+            ['sv' => $holidayName],
             new DateTime("$this->year-6-6", new DateTimeZone($this->timezone)),
             $this->locale
         ));

@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,7 +33,7 @@ trait CommonHolidays
      * calendar, New Year's Eve is probably the most celebrated holiday, often observed with fireworks at the stroke of
      * midnight as the new year starts in each time zone.
      *
-     * @link http://en.wikipedia.org/wiki/New_Year%27s_Eve
+     * @link https://en.wikipedia.org/wiki/New_Year%27s_Eve
      *
      * @param int $year the year for which New Year's Eve need to be created
      * @param string $timezone the timezone in which New Year's Eve is celebrated
@@ -67,7 +67,7 @@ trait CommonHolidays
      * is probably the most celebrated public holiday, often observed with fireworks at the stroke of midnight as the
      * new year starts in each time zone.
      *
-     * @link http://en.wikipedia.org/wiki/New_Year%27s_Day
+     * @link https://en.wikipedia.org/wiki/New_Year%27s_Day
      *
      * @param int $year the year for which New Year's Day need to be created
      * @param string $timezone the timezone in which New Year's Day is celebrated
@@ -100,7 +100,7 @@ trait CommonHolidays
      * Workers' Day by the Socialists and Communists of the Second International to commemorate the Haymarket affair in
      * Chicago that occurred on 4 May, 1886.
      *
-     * @link http://en.wikipedia.org/wiki/International_Workers%27_Day
+     * @link https://en.wikipedia.org/wiki/International_Workers%27_Day
      *
      * @param int $year the year for which International Workers' Day need to be created
      * @param string $timezone the timezone in which International Workers' Day is celebrated
@@ -139,7 +139,7 @@ trait CommonHolidays
      * love for each other by presenting flowers, offering confectionery, and sending greeting cards (known as
      * "valentines").
      *
-     * @link http://en.wikipedia.org/wiki/Valentine%27s_Day
+     * @link https://en.wikipedia.org/wiki/Valentine%27s_Day
      *
      * @param int $year the year for which Valentine's Day need to be created
      * @param string $timezone the timezone in which Valentine's Day is celebrated
@@ -176,7 +176,7 @@ trait CommonHolidays
      * 4, the Feast Day of St Francis of Assisi, the patron saint of animals. It started in 1931 at a convention of
      * ecologists in Florence, Italy who wished to highlight the plight of endangered species.
      *
-     * @link http://en.wikipedia.org/wiki/World_Animal_Day
+     * @link https://en.wikipedia.org/wiki/World_Animal_Day
      *
      * @param int $year the year for which World Animal Day need to be created
      * @param string $timezone the timezone in which World Animal Day is celebrated
@@ -215,7 +215,7 @@ trait CommonHolidays
      * held where farm laborers would seek new posts. November 11 is the feast day of St. Martin of Tours, who started
      * out as a Roman soldier.
      *
-     * @link http://en.wikipedia.org/wiki/St._Martin%27s_Day
+     * @link https://en.wikipedia.org/wiki/St._Martin%27s_Day
      *
      * @param int $year the year for which St. Martin's Day need to be created
      * @param string $timezone the timezone in which St. Martin's Day is celebrated
@@ -253,7 +253,7 @@ trait CommonHolidays
      * on other days by many other countries. Father's Day was created to complement Mother's Day, a celebration that
      * honors mothers and motherhood.
      *
-     * @link http://en.wikipedia.org/wiki/Father%27s_Day
+     * @link https://en.wikipedia.org/wiki/Father%27s_Day
      *
      * @param int $year the year for which Father's Day need to be created
      * @param string $timezone the timezone in which Father's Day is celebrated
@@ -291,7 +291,7 @@ trait CommonHolidays
      * the months of March or May. It complements similar celebrations honoring family members, such as Father's Day and
      * Siblings Day.
      *
-     * @link http://en.wikipedia.org/wiki/Mother%27s_Day
+     * @link https://en.wikipedia.org/wiki/Mother%27s_Day
      *
      * @param int $year the year for which Mother's Day need to be created
      * @param string $timezone the timezone in which Mother's Day is celebrated
@@ -329,7 +329,7 @@ trait CommonHolidays
      * Germany's unconditional surrender of its armed forces. It thus marked the end of World War II in Europe. Some
      * countries commemorate the end of the war on a different date.
      *
-     * @link http://en.wikipedia.org/wiki/Victory_in_Europe_Day
+     * @link https://en.wikipedia.org/wiki/Victory_in_Europe_Day
      *
      * @param int $year the year for which Victory in Europe Day need to be created
      * @param string $timezone the timezone in which Victory in Europe Day is celebrated
@@ -369,7 +369,7 @@ trait CommonHolidays
      * day of the Armistice of Villa Giusti. In the Netherlands, Denmark and Norway World War I is not commemorated as
      * the three countries all remained neutral.
      *
-     * @link http://en.wikipedia.org/wiki/Armistice_Day
+     * @link https://en.wikipedia.org/wiki/Armistice_Day
      *
      * @param int $year the year for which Armistice Day need to be created
      * @param string $timezone the timezone in which Armistice Day is celebrated
@@ -451,11 +451,15 @@ trait CommonHolidays
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function summerTime($year, $timezone, $locale, $type = null): ?Holiday
-    {
+    public function summerTime(
+        int $year,
+        string $timezone,
+        string $locale,
+        ?string $type = null
+    ): ?Holiday {
         $date = $this->calculateSummerWinterTime($year, $timezone, true);
 
-        if ($date) {
+        if ($date instanceof \DateTimeImmutable) {
             return new Holiday(
                 'summerTime',
                 [],
@@ -485,12 +489,15 @@ trait CommonHolidays
      * @param string $timezone the timezone in which Easter is celebrated
      * @param bool $summer whether to calculate the start of summer or winter time
      *
-     * @return DateTime|null A DateTime object representing the summer or winter transition time for the given
+     * @return \DateTimeImmutable|null A DateTime object representing the summer or winter transition time for the given
      *                        timezone. If no transition time is found, a null value is returned.
      * @throws \Exception
      */
-    protected function calculateSummerWinterTime($year, $timezone, $summer): ?DateTime
-    {
+    protected function calculateSummerWinterTime(
+        int $year,
+        string $timezone,
+        bool $summer
+    ): ?\DateTimeImmutable {
         $zone = new DateTimeZone($timezone);
 
         $transitions = $zone->getTransitions(\mktime(0, 0, 0, 1, 1, $year), \mktime(23, 59, 59, 12, 31, $year));
@@ -500,7 +507,7 @@ trait CommonHolidays
 
         foreach ($transitions as $transition) {
             if ($transition['isdst'] !== $dst && $transition['isdst'] === $summer) {
-                return new DateTime(\substr($transition['time'], 0, 10), $zone);
+                return new \DateTimeImmutable(\substr($transition['time'], 0, 10), $zone);
             }
             $dst = $transition['isdst'];
         }
@@ -525,11 +532,15 @@ trait CommonHolidays
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function winterTime($year, $timezone, $locale, $type = null): ?Holiday
-    {
+    public function winterTime(
+        int $year,
+        string $timezone,
+        string $locale,
+        ?string $type = null
+    ): ?Holiday {
         $date = $this->calculateSummerWinterTime($year, $timezone, false);
 
-        if ($date) {
+        if ($date instanceof \DateTimeImmutable) {
             return new Holiday(
                 'winterTime',
                 [],

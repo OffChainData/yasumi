@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,7 +27,7 @@ use Yasumi\Provider\Spain;
  * autonomous community is officially recognized as a nationality of Spain. The territory is divided into eight
  * provinces: Almería, Cádiz, Córdoba, Granada, Huelva, Jaén, Málaga and Seville. Its capital is the city of Seville.
  *
- * @link http://en.wikipedia.org/wiki/Andalusia
+ * @link https://en.wikipedia.org/wiki/Andalusia
  */
 class Andalusia extends Spain
 {
@@ -66,7 +66,7 @@ class Andalusia extends Spain
      * for the statute that made Andalusia an autonomous community of Andalusia (Spain). The Day of Andalucía is not a
      * public holiday in the rest of Spain on February 28.
      *
-     * @link http://en.wikipedia.org/wiki/D%C3%ADa_de_Andaluc%C3%ADa
+     * @link https://en.wikipedia.org/wiki/D%C3%ADa_de_Andaluc%C3%ADa
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -78,7 +78,7 @@ class Andalusia extends Spain
         if ($this->year >= 1980) {
             $this->addHoliday(new Holiday(
                 'andalusiaDay',
-                ['es_ES' => 'Día de Andalucía'],
+                ['es' => 'Día de Andalucía'],
                 new DateTime("$this->year-2-28", new DateTimeZone($this->timezone)),
                 $this->locale
             ));

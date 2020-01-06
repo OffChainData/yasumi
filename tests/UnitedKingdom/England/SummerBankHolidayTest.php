@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,6 +33,11 @@ class SummerBankHolidayTest extends EnglandBaseTestCase implements YasumiTestCas
     public const ESTABLISHMENT_YEAR = 1871;
 
     /**
+     * The year in which the holiday was renamed from August Bank Holiday to Summer Bank Holiday.
+     */
+    public const RENAME_YEAR = 1965;
+
+    /**
      * Tests the holiday defined in this test.
      * @throws \Exception
      * @throws \ReflectionException
@@ -50,6 +55,8 @@ class SummerBankHolidayTest extends EnglandBaseTestCase implements YasumiTestCas
 
     /**
      * Tests the holiday exception in 2020.
+     *
+     * @throws \Exception
      * @throws \ReflectionException
      */
     public function testHolidayBefore1965()
@@ -65,7 +72,9 @@ class SummerBankHolidayTest extends EnglandBaseTestCase implements YasumiTestCas
 
     /**
      * Tests the holiday during trial period in 1965-1970.
+     *
      * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHolidayTrialPeriod()
     {
@@ -129,8 +138,22 @@ class SummerBankHolidayTest extends EnglandBaseTestCase implements YasumiTestCas
         $this->assertTranslatedHolidayName(
             self::REGION,
             self::HOLIDAY,
-            $this->generateRandomYear(self::ESTABLISHMENT_YEAR),
+            $this->generateRandomYear(self::RENAME_YEAR),
             [self::LOCALE => 'Summer Bank Holiday']
+        );
+    }
+
+    /**
+     * Tests the translated name of the holiday defined in this test.
+     * @throws \ReflectionException
+     */
+    public function testTranslationBeforeRename(): void
+    {
+        $this->assertTranslatedHolidayName(
+            self::REGION,
+            self::HOLIDAY,
+            $this->generateRandomYear(self::ESTABLISHMENT_YEAR, self::RENAME_YEAR - 1),
+            [self::LOCALE => 'August Bank Holiday']
         );
     }
 

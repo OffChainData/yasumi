@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -105,7 +105,7 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
             [2011, '2011-04-26'],
             [2038, '2038-04-27'],
             [2095, '2095-04-26'],
-            [2163, '2163-04-26']
+            [2163, '2163-04-26'],
         ];
 
         return $data;

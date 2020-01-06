@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,7 +41,7 @@ class NetherlandsTest extends NetherlandsBaseTestCase
             'pentecostMonday',
             'liberationDay',
             'christmasDay',
-            'secondChristmasDay'
+            'secondChristmasDay',
         ], self::REGION, $this->year, Holiday::TYPE_OFFICIAL);
     }
 
@@ -60,7 +60,7 @@ class NetherlandsTest extends NetherlandsBaseTestCase
             'stNicholasDay',
             'carnivalDay',
             'secondCarnivalDay',
-            'thirdCarnivalDay'
+            'thirdCarnivalDay',
         ], self::REGION, $this->year, Holiday::TYPE_OBSERVANCE);
     }
 
@@ -96,7 +96,7 @@ class NetherlandsTest extends NetherlandsBaseTestCase
             'fathersDay',
             'mothersDay',
             'epiphany',
-            'princesDay'
+            'princesDay',
         ], self::REGION, $this->year, Holiday::TYPE_OTHER);
     }
 

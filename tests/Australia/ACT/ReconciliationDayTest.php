@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -75,7 +75,7 @@ class ReconciliationDayTest extends ACTBaseTestCase implements YasumiTestCaseInt
             [2027, '2027-05-31'],
             [2028, '2028-05-29'],
             [2029, '2029-05-28'],
-            [2030, '2030-05-27']
+            [2030, '2030-05-27'],
         ];
 
         return $data;

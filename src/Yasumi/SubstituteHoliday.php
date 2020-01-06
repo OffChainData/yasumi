@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,13 +41,13 @@ class SubstituteHoliday extends Holiday
      * If a holiday date needs to be defined for a specific timezone, make sure that the date instance
      * (DateTimeInterface) has the correct timezone set. Otherwise the default system timezone is used.
      *
-     * @param Holiday            $substitutedHoliday The holiday being substituted
-     * @param array              $names              An array containing the name/description of this holiday
+     * @param Holiday $substitutedHoliday The holiday being substituted
+     * @param array $names An array containing the name/description of this holiday
      *                                               in various languages. Overrides global translations
-     * @param \DateTimeInterface $date               A DateTimeInterface instance representing the date of the holiday
-     * @param string             $displayLocale      Locale (i.e. language) in which the holiday information needs to
+     * @param \DateTimeInterface $date A DateTimeInterface instance representing the date of the holiday
+     * @param string $displayLocale Locale (i.e. language) in which the holiday information needs to
      *                                               be displayed in. (Default 'en_US')
-     * @param string             $type               The type of holiday. Use the following constants: TYPE_OFFICIAL,
+     * @param string $type The type of holiday. Use the following constants: TYPE_OFFICIAL,
      *                                               TYPE_OBSERVANCE, TYPE_SEASON, TYPE_BANK or TYPE_OTHER. By default
      *                                               an official holiday is considered.
      *
@@ -87,11 +87,12 @@ class SubstituteHoliday extends Holiday
         $name = parent::getName();
 
         if ($name === $this->shortName) {
-            $pattern = $this->substituteHolidayTranslations[$this->displayLocale]
-                ?? $this->substituteHolidayTranslations[self::DEFAULT_LOCALE]
-                ?? $this->shortName;
-
-            $name = \str_replace('{0}', $this->substitutedHoliday->getName(), $pattern);
+            foreach ($this->getLocales() as $locale) {
+                $pattern = $this->substituteHolidayTranslations[$locale] ?? null;
+                if ($pattern) {
+                    return \str_replace('{0}', $this->substitutedHoliday->getName(), $pattern);
+                }
+            }
         }
 
         return $name;
@@ -102,7 +103,7 @@ class SubstituteHoliday extends Holiday
      *
      * @param TranslationsInterface $globalTranslations global translations
      */
-    public function mergeGlobalTranslations(TranslationsInterface $globalTranslations)
+    public function mergeGlobalTranslations(TranslationsInterface $globalTranslations): void
     {
         $this->substituteHolidayTranslations = $globalTranslations->getTranslations('substituteHoliday');
 

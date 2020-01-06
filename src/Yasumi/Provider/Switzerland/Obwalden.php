@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -85,8 +85,7 @@ class Obwalden extends Switzerland
             $this->addHoliday(new Holiday(
                 'bruderKlausenFest',
                 [
-                    'de_DE' => 'Bruder-Klausen-Fest',
-                    'de_CH' => 'Bruder-Klausen-Fest'
+                    'de' => 'Bruder-Klausen-Fest',
                 ],
                 new DateTime($this->year . '-09-25', new DateTimeZone($this->timezone)),
                 $this->locale,
@@ -96,8 +95,7 @@ class Obwalden extends Switzerland
             $this->addHoliday(new Holiday(
                 'bruderKlausenFest',
                 [
-                    'de_DE' => 'Bruder-Klausen-Fest',
-                    'de_CH' => 'Bruder-Klausen-Fest'
+                    'de' => 'Bruder-Klausen-Fest',
                 ],
                 new DateTime($this->year . '-09-21', new DateTimeZone($this->timezone)),
                 $this->locale,

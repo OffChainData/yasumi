@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -102,15 +102,41 @@ class HolidayTest extends TestCase
     }
 
     /**
+     * Tests the getName function of the Holiday object with only a parent translation for the name given.
+     * @throws Exception
+     */
+    public function testHolidayGetNameWithParentLocaleTranslation(): void
+    {
+        $name = 'testHoliday';
+        $translation = 'My Holiday';
+        $holiday = new Holiday($name, ['de' => $translation], new DateTime(), 'de_DE');
+
+        $this->assertIsString($holiday->getName());
+        $this->assertEquals($translation, $holiday->getName());
+    }
+
+    /**
      * Tests the getName function of the Holiday object with only a default translation for the name given.
      * @throws Exception
      */
     public function testHolidayGetNameWithOnlyDefaultTranslation(): void
     {
         $name = 'testHoliday';
+        $holiday = new Holiday($name, ['en' => 'Holiday EN', 'en_US' => 'Holiday EN-US'], new DateTime(), 'nl_NL');
+
+        $this->assertIsString($holiday->getName());
+        $this->assertEquals('Holiday EN-US', $holiday->getName());
+    }
+
+    /**
+     * Tests the getName function of the Holiday object with only a default translation for the name given.
+     * @throws Exception
+     */
+    public function testHolidayGetNameWithOnlyDefaultTranslationAndFallback(): void
+    {
+        $name = 'testHoliday';
         $translation = 'My Holiday';
-        $locale = 'en_US';
-        $holiday = new Holiday($name, [$locale => $translation], new DateTime(), $locale);
+        $holiday = new Holiday($name, ['en' => $translation], new DateTime(), 'nl_NL');
 
         $this->assertIsString($holiday->getName());
         $this->assertEquals($translation, $holiday->getName());
@@ -143,7 +169,7 @@ class HolidayTest extends TestCase
 
         $translations = [
             'en_US' => 'New Year\'s Day',
-            'pl_PL' => 'Nowy Rok'
+            'pl_PL' => 'Nowy Rok',
         ];
 
         $translationsStub->expects($this->once())->method('getTranslations')->with($this->equalTo('newYearsDay'))->willReturn($translations);
@@ -159,6 +185,32 @@ class HolidayTest extends TestCase
     }
 
     /**
+     * Tests the getName function of the Holiday object with global translations and no custom translation.
+     * @throws Exception
+     */
+    public function testHolidayGetNameWithGlobalParentLocaleTranslations(): void
+    {
+        /** @var TranslationsInterface|PHPUnit_Framework_MockObject_MockObject $translationsStub */
+        $translationsStub = $this->getMockBuilder(TranslationsInterface::class)->getMock();
+
+        $translations = [
+            'en_US' => 'New Year\'s Day',
+            'pl' => 'Nowy Rok',
+        ];
+
+        $translationsStub->expects($this->once())->method('getTranslations')->with($this->equalTo('newYearsDay'))->willReturn($translations);
+
+        $locale = 'pl_PL';
+
+        $holiday = new Holiday('newYearsDay', [], new DateTime('2015-01-01'), $locale);
+        $holiday->mergeGlobalTranslations($translationsStub);
+
+        $this->assertNotNull($holiday->getName());
+        $this->assertIsString($holiday->getName());
+        $this->assertEquals($translations['pl'], $holiday->getName());
+    }
+
+    /**
      * Tests the getName function of the Holiday object with global translations and a new custom translation.
      * @throws Exception
      */
@@ -169,7 +221,7 @@ class HolidayTest extends TestCase
 
         $translations = [
             'en_US' => 'New Year\'s Day',
-            'pl_PL' => 'Nowy Rok'
+            'pl_PL' => 'Nowy Rok',
         ];
 
         $translationsStub->expects($this->once())->method('getTranslations')->with($this->equalTo('newYearsDay'))->willReturn($translations);
@@ -201,7 +253,7 @@ class HolidayTest extends TestCase
 
         $translations = [
             'en_US' => 'New Year\'s Day',
-            'pl_PL' => 'Nowy Rok'
+            'pl_PL' => 'Nowy Rok',
         ];
 
         $translationsStub->expects($this->once())->method('getTranslations')->with($this->equalTo('newYearsDay'))->willReturn($translations);

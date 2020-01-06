@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -77,7 +77,7 @@ class France extends AbstractProvider
      * is held on the morning of 14 July, on the Champs-Élysées in Paris in front of the President of the Republic,
      * French officials and foreign guests.
      *
-     * @link http://en.wikipedia.org/wiki/Bastille_Day
+     * @link https://en.wikipedia.org/wiki/Bastille_Day
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -88,8 +88,8 @@ class France extends AbstractProvider
     {
         if ($this->year >= 1790) {
             $this->addHoliday(new Holiday('bastilleDay', [
-                'en_US' => 'Bastille Day',
-                'fr_FR' => 'La Fête nationale'
+                'en' => 'Bastille Day',
+                'fr' => 'La Fête nationale',
             ], new DateTime("$this->year-7-14", new DateTimeZone($this->timezone)), $this->locale));
         }
     }

@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,7 +30,7 @@ use Yasumi\Provider\Spain;
  * Castile–La Mancha to the west, and Murcia to the south. It is formed by the provinces of Castelló, València and
  * Alacant.
  *
- * @link http://en.wikipedia.org/wiki/Valencian_Community
+ * @link https://en.wikipedia.org/wiki/Valencian_Community
  */
 class ValencianCommunity extends Spain
 {
@@ -73,7 +73,7 @@ class ValencianCommunity extends Spain
      * autonomous communities of Catalonia, Aragon, Castile-La Mancha, and Mercia. The Balearic Islands are close by in
      * the Mediterranean. The Valencia region gained some autonomy in 1977 and full autonomy in 1982.
      *
-     * @link http://www.timeanddate.com/holidays/spain/the-valencian-community-day
+     * @link https://www.timeanddate.com/holidays/spain/the-valencian-community-day
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -83,9 +83,15 @@ class ValencianCommunity extends Spain
     private function calculateValencianCommunityDay(): void
     {
         if ($this->year >= 1239) {
-            $this->addHoliday(new Holiday('valencianCommunityDay', [
-                'es_ES' => 'Día de la Comunidad Valenciana'
-            ], new DateTime("$this->year-10-9", new DateTimeZone($this->timezone)), $this->locale));
+            $this->addHoliday(new Holiday(
+                'valencianCommunityDay',
+                [
+                    'ca' => 'Diada Nacional del País Valencià',
+                    'es' => 'Día de la Comunidad Valenciana',
+                ],
+                new DateTime("$this->year-10-9", new DateTimeZone($this->timezone)),
+                $this->locale
+            ));
         }
     }
 }

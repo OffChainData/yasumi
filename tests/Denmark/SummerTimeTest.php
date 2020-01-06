@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,7 +43,7 @@ class SummerTimeTest extends DenmarkBaseTestCase implements YasumiTestCaseInterf
         $expectedDate = new DateTime("last sunday of march $year", new DateTimeZone(self::TIMEZONE));
 
         // Since 1980 Summertime in Denmark starts on the last day of March. In 1980 itself however, it started on April, 6th.
-        if ($year === 1980) {
+        if (1980 === $year) {
             $expectedDate = new DateTime('1980-04-06', new DateTimeZone(self::TIMEZONE));
         }
 
@@ -65,7 +65,7 @@ class SummerTimeTest extends DenmarkBaseTestCase implements YasumiTestCaseInterf
             self::REGION,
             self::HOLIDAY,
             $this->generateRandomYear(1980, 2037),
-            [self::LOCALE => 'Sommertid starter']
+            [self::LOCALE => 'sommertid starter']
         );
     }
 

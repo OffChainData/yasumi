@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -68,7 +68,7 @@ class LauncestonShowTest extends NortheastBaseTestCase implements YasumiTestCase
             [2017, '2017-10-12'],
             [2018, '2018-10-11'],
             [2019, '2019-10-10'],
-            [2020, '2020-10-08']
+            [2020, '2020-10-08'],
         ];
 
         return $data;

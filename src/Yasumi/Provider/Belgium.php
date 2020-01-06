@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -64,11 +64,9 @@ class Belgium extends AbstractProvider
          * Belgian National Day is the National Day of Belgium celebrated on 21 July each year.
          */
         $this->addHoliday(new Holiday('nationalDay', [
-            'fr_FR' => 'Fête nationale',
-            'fr_BE' => 'Fête nationale',
-            'en_US' => 'Belgian National Day',
-            'nl_NL' => 'Nationale feestdag',
-            'nl_BE' => 'Nationale feestdag'
+            'fr' => 'Fête nationale',
+            'en' => 'Belgian National Day',
+            'nl' => 'nationale feestdag',
         ], new DateTime("$this->year-7-21", new DateTimeZone($this->timezone)), $this->locale));
     }
 }

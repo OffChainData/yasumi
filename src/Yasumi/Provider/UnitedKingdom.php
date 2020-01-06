@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -68,7 +68,7 @@ class UnitedKingdom extends AbstractProvider
      * Since 1974 (by Royal Proclamation) it was established as a bank holiday.
      *
      * @link https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
-     * @link http://www.timeanddate.com/holidays/uk/new-year-day
+     * @link https://www.timeanddate.com/holidays/uk/new-year-day
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -107,7 +107,7 @@ class UnitedKingdom extends AbstractProvider
      * and schools are closed, while stores may be open or closed, according to local custom. Public transport systems
      * often run to a holiday timetable.
      *
-     * @link http://www.timeanddate.com/holidays/uk/early-may-bank-holiday
+     * @link https://www.timeanddate.com/holidays/uk/early-may-bank-holiday
      *
      * @throws InvalidDateException
      * @throws \InvalidArgumentException
@@ -125,7 +125,7 @@ class UnitedKingdom extends AbstractProvider
         if (1995 === $this->year || 2020 === $this->year) {
             $this->addHoliday(new Holiday(
                 'mayDayBankHoliday',
-                ['en_GB' => 'May Day Bank Holiday'],
+                ['en' => 'May Day Bank Holiday'],
                 new DateTime("$this->year-5-8", new DateTimeZone($this->timezone)),
                 $this->locale,
                 Holiday::TYPE_BANK
@@ -136,7 +136,7 @@ class UnitedKingdom extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'mayDayBankHoliday',
-            ['en_GB' => 'May Day Bank Holiday'],
+            ['en' => 'May Day Bank Holiday'],
             new DateTime("first monday of may $this->year", new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK
@@ -151,7 +151,7 @@ class UnitedKingdom extends AbstractProvider
      * The last Monday in May is a bank holiday. Many organizations, businesses and schools are closed. Stores may be
      * open or closed, according to local custom. Public transport systems often run to a holiday timetable.
      *
-     * @link http://www.timeanddate.com/holidays/uk/spring-bank-holiday
+     * @link https://www.timeanddate.com/holidays/uk/spring-bank-holiday
      * @link https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
      *
      * @throws InvalidDateException
@@ -171,7 +171,7 @@ class UnitedKingdom extends AbstractProvider
         if (2002 === $this->year || 2012 === $this->year) {
             $this->addHoliday(new Holiday(
                 'springBankHoliday',
-                ['en_GB' => 'Spring Bank Holiday'],
+                ['en' => 'Spring Bank Holiday'],
                 new DateTime("$this->year-6-4", new DateTimeZone($this->timezone)),
                 $this->locale,
                 Holiday::TYPE_BANK
@@ -182,7 +182,7 @@ class UnitedKingdom extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'springBankHoliday',
-            ['en_GB' => 'Spring Bank Holiday'],
+            ['en' => 'Spring Bank Holiday'],
             new DateTime("last monday of may $this->year", new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK
@@ -214,7 +214,7 @@ class UnitedKingdom extends AbstractProvider
         if ($this->year < 1965) {
             $this->addHoliday(new Holiday(
                 'summerBankHoliday',
-                ['en_GB' => 'August Bank Holiday'],
+                ['en' => 'August Bank Holiday'],
                 new DateTime("first monday of august $this->year", new DateTimeZone($this->timezone)),
                 $this->locale,
                 Holiday::TYPE_BANK
@@ -229,7 +229,7 @@ class UnitedKingdom extends AbstractProvider
         if (1968 === $this->year || 1969 === $this->year) {
             $this->addHoliday(new Holiday(
                 'summerBankHoliday',
-                ['en_GB' => 'Summer Bank Holiday'],
+                ['en' => 'Summer Bank Holiday'],
                 new DateTime("first monday of september $this->year", new DateTimeZone($this->timezone)),
                 $this->locale,
                 Holiday::TYPE_BANK
@@ -240,7 +240,7 @@ class UnitedKingdom extends AbstractProvider
 
         $this->addHoliday(new Holiday(
             'summerBankHoliday',
-            ['en_GB' => 'Summer Bank Holiday'],
+            ['en' => 'Summer Bank Holiday'],
             new DateTime("last monday of august $this->year", new DateTimeZone($this->timezone)),
             $this->locale,
             Holiday::TYPE_BANK
@@ -261,24 +261,20 @@ class UnitedKingdom extends AbstractProvider
      * If Christmas Day falls on a Saturday, the following Monday and Tuesday are bank holidays. All schools and many
      * organizations are closed in this period. Some may close for the whole week between Christmas and New Year.
      *
-     * @link http://www.timeanddate.com/holidays/uk/christmas-day
-     * @link http://www.timeanddate.com/holidays/uk/boxing-day
+     * @link https://www.timeanddate.com/holidays/uk/christmas-day
+     * @link https://www.timeanddate.com/holidays/uk/boxing-day
      *
-     * @throws InvalidDateException
-     * @throws \InvalidArgumentException
-     * @throws UnknownLocaleException
+     * @param string|null $type the Holiday Type (e.g. Official, Seasonal, etc.)
+     *
      * @throws \Exception
      */
-    protected function calculateChristmasHolidays($type = Holiday::TYPE_OFFICIAL): void
+    protected function calculateChristmasHolidays(?string $type = null): void
     {
-        $christmasDay = $this->christmasDay($this->year, $this->timezone, $this->locale, $type);
+        $christmasDay = $this->christmasDay($this->year, $this->timezone, $this->locale, $type ?? Holiday::TYPE_OFFICIAL);
         $secondChristmasDay = $this->secondChristmasDay($this->year, $this->timezone, $this->locale, Holiday::TYPE_BANK);
 
         $this->addHoliday($christmasDay);
         $this->addHoliday($secondChristmasDay);
-
-        $substituteChristmasDay = clone $christmasDay;
-        $substituteSecondChristmasDay = clone $secondChristmasDay;
 
         if (\in_array((int)$christmasDay->format('w'), [0, 6], true)) {
             $date = clone $christmasDay;

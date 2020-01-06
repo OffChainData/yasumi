@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -86,7 +86,7 @@ class VernalEquinoxDayTest extends JapanBaseTestCase implements YasumiTestCaseIn
             [2013, 3, 20],
             [2016, 3, 20],
             [2025, 3, 20],
-            [2143, 3, 21]
+            [2143, 3, 21],
         ];
     }
 
@@ -102,21 +102,6 @@ class VernalEquinoxDayTest extends JapanBaseTestCase implements YasumiTestCaseIn
             self::REGION,
             self::HOLIDAY,
             $this->generateRandomYear(1000, self::ESTABLISHMENT_YEAR - 1)
-        );
-    }
-
-    /**
-     * Tests Vernal Equinox Day between 1851 and 1948. This national holiday was established in 1948 as a day for
-     * the admiration of nature and the love of living things. Prior to 1948, the vernal equinox was an imperial
-     * ancestor worship festival called Shunki kōrei-sai (春季皇霊祭).
-     * @throws ReflectionException
-     */
-    public function testVernalEquinoxDayBetween1851And1948()
-    {
-        $this->assertNotHoliday(
-            self::REGION,
-            self::HOLIDAY,
-            $this->generateRandomYear(1851, self::ESTABLISHMENT_YEAR - 1)
         );
     }
 

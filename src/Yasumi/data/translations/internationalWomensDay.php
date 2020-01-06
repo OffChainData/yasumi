@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
+
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,10 +13,9 @@
 
 // Translations for International Women's Day
 return [
-    'de_DE' => 'Internationaler Frauentag',
-    'en_US' => 'International Women\'s Day',
-    'ko_KR' => '국제 여성의 날',
-    'ru_RU' => 'Международный женский день',
-    'ru_UA' => 'Международный женский день',
-    'uk_UA' => 'Міжнародний жіночий день'
+    'de' => 'Internationaler Frauentag',
+    'en' => 'International Women\'s Day',
+    'ko' => '국제 여성의 날',
+    'ru' => 'Международный женский день',
+    'uk' => 'Міжнародний жіночий день',
 ];

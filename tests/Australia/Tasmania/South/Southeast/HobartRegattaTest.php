@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -68,7 +68,7 @@ class HobartRegattaTest extends SoutheastBaseTestCase implements YasumiTestCaseI
             [2017, '2017-02-13'],
             [2018, '2018-02-12'],
             [2019, '2019-02-11'],
-            [2020, '2020-02-10']
+            [2020, '2020-02-10'],
         ];
 
         return $data;

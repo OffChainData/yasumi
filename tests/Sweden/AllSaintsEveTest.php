@@ -2,7 +2,7 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2019 AzuyaLabs
+ * Copyright (c) 2015 - 2020 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -61,7 +61,7 @@ class AllSaintsEveTest extends SwedenBaseTestCase implements YasumiTestCaseInter
 
             // Check between 30 October and 5th of November the day that is a Friday
             for ($d = 0; $d <= 7; ++$d) {
-                if ($date->format('l') === 'Friday') {
+                if ('Friday' === $date->format('l')) {
                     $data[] = [$year, $date];
                     break;
                 }
