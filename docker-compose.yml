@@ -1,0 +1,9 @@
+version: '3'
+services:
+  holiday-sources:
+    container_name: yasumi
+    ports:
+      - "8186:8000"
+    build: .
+    volumes:
+       - ./:/var/www/app
